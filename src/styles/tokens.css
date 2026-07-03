@@ -1,0 +1,90 @@
+/**
+ * Design tokens — the single source of truth for color, radius, elevation, and
+ * motion. Components consume these via Tailwind theme tokens (see globals.css);
+ * no component should hardcode a hex value or a raw duration.
+ *
+ * Direction "Keystone": a cool, engineered neutral base, a confident cobalt as
+ * the single primary, and a restrained amber accent reserved for the signature
+ * highlight. Structure is drawn with hairline borders and a faint blueprint grid.
+ */
+
+:root {
+  /* Surfaces & text */
+  --background: #fcfcfd;
+  --surface: #ffffff;
+  --surface-2: #f6f7f9;
+  --muted: #f1f3f6;
+  --muted-foreground: #5a6273;
+  --foreground: #14161c;
+
+  /* Lines & focus */
+  --border: #e5e8ee;
+  --input: #e5e8ee;
+  --ring: #2f44d8;
+
+  /* Brand & semantic */
+  --primary: #2f44d8;
+  --primary-foreground: #ffffff;
+  --accent: #c9791b;
+  --accent-foreground: #ffffff;
+  --success: #15803d;
+  --success-foreground: #ffffff;
+  --warning: #b45309;
+  --warning-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Signature: blueprint grid line color */
+  --grid-line: rgba(20, 22, 28, 0.045);
+
+  /* Radius scale (base drives the rest in globals.css) */
+  --radius: 0.625rem;
+
+  /* Elevation — low-alpha, cool-tinted, never heavy */
+  --shadow-xs: 0 1px 2px 0 rgba(16, 24, 40, 0.04);
+  --shadow-sm:
+    0 1px 3px 0 rgba(16, 24, 40, 0.06), 0 1px 2px -1px rgba(16, 24, 40, 0.05);
+  --shadow-md:
+    0 4px 12px -2px rgba(16, 24, 40, 0.08),
+    0 2px 6px -2px rgba(16, 24, 40, 0.05);
+  --shadow-lg: 0 12px 32px -8px rgba(16, 24, 40, 0.14);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration: 200ms;
+  --duration-slow: 250ms;
+}
+
+.dark {
+  --background: #0b0d12;
+  --surface: #12151c;
+  --surface-2: #171b24;
+  --muted: #191d27;
+  --muted-foreground: #98a1b3;
+  --foreground: #e8eaf0;
+
+  --border: #262b37;
+  --input: #2a303d;
+  --ring: #6e7dff;
+
+  --primary: #6e7dff;
+  --primary-foreground: #0b0d12;
+  --accent: #eaa54a;
+  --accent-foreground: #1b1205;
+  --success: #4ade80;
+  --success-foreground: #052e16;
+  --warning: #fbbf24;
+  --warning-foreground: #1c1207;
+  --destructive: #f87171;
+  --destructive-foreground: #1b0a0a;
+
+  --grid-line: rgba(255, 255, 255, 0.035);
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm:
+    0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md:
+    0 4px 12px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+}

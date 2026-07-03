@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Dark mode is class-driven (next-themes sets `.dark` on <html>). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+ * Map design tokens onto Tailwind's theme so utilities resolve to our tokens:
+ * `bg-background`, `text-muted-foreground`, `border-border`, `bg-primary`,
+ * `rounded-lg`, `shadow-md`, `font-display`, etc.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-foreground: var(--foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --font-sans: var(--ff-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--ff-display), var(--ff-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--ff-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --ease-out: var(--ease-out);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv01", "cv03", "ss01";
+  }
+
+  /* Visible, consistent keyboard focus everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 22%, transparent);
+  }
+}
+
+@layer components {
+  /* Signature: uppercase monospace metadata label. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+  }
+
+  /* Signature: faint engineered grid for hero / empty-canvas backgrounds. */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
